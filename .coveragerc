@@ -1,0 +1,31 @@
+[run]
+include = noetikon/*
+
+[report]
+exclude_lines =
+    pragma: no cover
+
+    # Don't complain about missing debug-only code:
+    def __unicode__
+    def __repr__
+    if self\.debug
+    if settings.DEBUG:
+    if settings.DEBUG and*:
+    if settings.DEBUG or*:
+
+    # Don't complain if tests don't hit defensive assertion code:
+    raise AssertionError
+    raise NotImplementedError
+
+    # Don't complain if non-runnable code isn't run:
+    if __name__ == .__main__.:
+
+omit =
+    noetikon/*/migrations/*
+    noetikon/*/tests/*
+    noetikon/*/test_*.py
+    noetikon/settings/*
+    noetikon/wsgi.py
+    noetikon/*/management/*
+
+show_missing = True

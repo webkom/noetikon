@@ -1,0 +1,10 @@
+django>=1.7,<1.8
+
+psycopg2
+markdown
+pyyaml
+
+django-basis
+django-extensions
+djangorestframework
+sorl-thumbnail==12.1c
