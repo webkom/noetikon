@@ -54,3 +54,4 @@ docs/_build/
 target/
 
 noetikon/settings/local.py
+*.sqlite3

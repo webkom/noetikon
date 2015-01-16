@@ -5,6 +5,7 @@ markdown
 pyyaml
 
 django-basis
+django-nopassword
 django-extensions
 djangorestframework
 sorl-thumbnail==12.1c
