@@ -18,6 +18,6 @@ production:
 	venv/bin/pip install -r requirements/prod.txt --upgrade
 	venv/bin/python manage.py migrate
 	venv/bin/python manage.py collectstatic --noinput
-	touch /etc/uwsgi/apps-enabled/noetikon.ini
+	sudo supervisorctl restart noetikon
 
 .PHONY: help dev prod production
