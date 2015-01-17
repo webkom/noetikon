@@ -5,6 +5,7 @@ markdown
 pyyaml
 
 django-basis
+django-braces
 django-nopassword
 django-extensions
 djangorestframework
