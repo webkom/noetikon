@@ -14,3 +14,6 @@ if 'debug_toolbar' in INSTALLED_APPS:
 if 'nopassword' in INSTALLED_APPS:
     from noetikon.settings.nopassword import *
 
+TEMPLATE_DEBUG = True
+THUMBNAIL_DEBUG = True
+

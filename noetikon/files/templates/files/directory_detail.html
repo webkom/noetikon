@@ -8,8 +8,8 @@
     {% endfor %}
   </ul>
   <ul>
-    {% for directory in object.files.all %}
-      <li><a href="{% url 'directory-detail' directory.slug %}">{{ directory.name }}</a></li>
+    {% for file in object.files.all %}
+      <li><a href="{% url 'file-download' file.slug %}">{{ file.name }}</a></li>
     {% endfor %}
   </ul>
 {% endblock %}

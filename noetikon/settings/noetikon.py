@@ -6,4 +6,6 @@ FILE_TYPES = {
     'text': 'txt'
 }
 
-IGNORE_FILES = ['.DS_Store']
+IGNORE_FILES = ['.DS_Store', 'Thumbs.db']
+
+STORAGE_BASE_PATH = ''

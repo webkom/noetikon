@@ -80,3 +80,7 @@ class File(FilePropertyMixin, BasisModel):
 
     def is_image(self):
         return os.path.splitext(self.path) in settings.FILE_TYPES['image']
+
+    @property
+    def x_redirect_url(self):
+        return self.path.replace(settings.STORAGE_BASE_PATH, '')
