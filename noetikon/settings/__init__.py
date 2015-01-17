@@ -11,3 +11,6 @@ except ImportError as e:
 if 'debug_toolbar' in INSTALLED_APPS:
     from noetikon.settings.debug_toolbar import *
 
+if 'nopassword' in INSTALLED_APPS:
+    from noetikon.settings.nopassword import *
+

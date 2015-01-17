@@ -26,11 +26,6 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
-AUTHENTICATION_BACKENDS = (
-    'nopassword.backends.email.EmailBackend',
-    'django.contrib.auth.backends.ModelBackend',
-)
-
 
 # Application definition
 
@@ -41,8 +36,6 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    'nopassword',
 
     'noetikon.files',
 )
