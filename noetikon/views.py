@@ -8,6 +8,7 @@ def home(request):
     print(request.user.is_authenticated())
     return hhome(request)
 
+
 @login_required
 def hhome(request):
     return HttpResponse("success")
