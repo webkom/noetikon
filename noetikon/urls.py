@@ -1,10 +1,13 @@
 from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.core.urlresolvers import reverse_lazy
+from django.views.generic.base import RedirectView
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^', include('noetikon.files.urls')),
+    url(r'^files/', include('noetikon.files.urls')),
+    url(r'^$', RedirectView.as_view(url=reverse_lazy('directory-list')))
 ]
 
 if 'nopassword' in settings.INSTALLED_APPS:
