@@ -94,7 +94,7 @@ class File(FilePropertyMixin, BasisModel):
 
     @cached_property
     def extension(self):
-        return os.path.splitext(self.path)[1].replace('.', '')
+        return os.path.splitext(self.path)[1].replace('.', '').lower()
 
     def is_image(self):
         return self.extension in settings.FILE_TYPES['image']
