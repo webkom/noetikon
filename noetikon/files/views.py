@@ -10,7 +10,7 @@ class DirectoryListView(LoginRequiredMixin, ListView):
     model = Directory
 
     def get_queryset(self):
-        return Directory.objects.filter(parent_folder=None)
+        return Directory.objects.permitted(self.request.user).filter(parent_folder=None)
 
 
 class DirectoryDetailView(LoginRequiredMixin, DetailView):

@@ -7,6 +7,7 @@ from django.utils.functional import cached_property
 from basis.models import PersistentModel, BasisModel
 
 from noetikon.helpers import slugify
+from .managers import DirectoryManager
 
 
 class FilePropertyMixin(object):
@@ -31,6 +32,8 @@ class Directory(FilePropertyMixin, PersistentModel):
     parent_folder = models.ForeignKey('self', related_name='children', null=True, blank=True)
     users_with_access = models.ManyToManyField(settings.AUTH_USER_MODEL, null=True, blank=True)
     groups_with_access = models.ManyToManyField('auth.Group', null=True, blank=True)
+
+    objects = DirectoryManager()
 
     class Meta:
         verbose_name_plural = 'directories'
