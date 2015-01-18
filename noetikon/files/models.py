@@ -57,7 +57,7 @@ class Directory(FilePropertyMixin, PersistentModel):
                 directory = Directory.objects.get_or_create(path=path, parent_folder=self)[0]
                 directory.update_content(verbose)
             elif os.path.isfile(path):
-                File.objects.create(path=path, parent_folder=self)
+                File.objects.get_or_create(path=path, parent_folder=self)
 
             if verbose:
                 print(path)
