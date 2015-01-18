@@ -6,9 +6,10 @@ from django.utils.functional import cached_property
 
 from basis.models import PersistentModel, BasisModel
 import sys
+from sorl.thumbnail.shortcuts import get_thumbnail
 
 from noetikon.helpers import slugify
-from .managers import DirectoryManager
+from .managers import DirectoryManager, FileManager
 
 
 class FilePropertyMixin(object):
@@ -77,6 +78,8 @@ class File(FilePropertyMixin, BasisModel):
     path = models.TextField(unique=True)
     slug = models.TextField(unique=True, editable=False)
     parent_folder = models.ForeignKey(Directory, related_name='files')
+
+    objects = FileManager()
 
     class Meta:
         ordering = ['path']
