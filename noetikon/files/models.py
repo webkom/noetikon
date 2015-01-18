@@ -86,4 +86,4 @@ class File(FilePropertyMixin, BasisModel):
 
     @property
     def x_redirect_url(self):
-        return self.path.replace(settings.STORAGE_BASE_PATH, '')
+        return '/protected{}'.format(self.path.replace(settings.STORAGE_BASE_PATH, ''))
