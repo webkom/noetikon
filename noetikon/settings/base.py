@@ -15,6 +15,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'django_extensions',
+    'pipeline',
+
     'noetikon.files',
 )
 
@@ -49,6 +52,25 @@ STATIC_ROOT = os.path.join(BASE_DIR, '../static')
 STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, '../uploads')
 MEDIA_URL = '/uploads/'
-STATICFILES_DIRS = os.path.join(BASE_DIR, 'static/'),
+STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
 
 TEMPLATE_DIRS = os.path.join(BASE_DIR, 'templates'),
+
+# STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+# PIPELINE_COMPILERS = 'pipeline.compilers.sass.SASSCompiler',
+#
+# STATICFILES_FINDERS = (
+#     'django.contrib.staticfiles.finders.FileSystemFinder',
+#     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+#     'pipeline.finders.PipelineFinder',
+# )
+#
+# PIPELINE_CSS = {
+#     'main': {
+#         'source_filenames': (
+#             'sass/main.sass',
+#         ),
+#         'output_filename': 'sass/main.css',
+#     },
+# }
+#

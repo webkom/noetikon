@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <ul>
+  <h2>Directories:</h2>
+  <ul class="directory-list">
     {% for directory in object_list %}
       <li><a href="{% url 'directory-detail' directory.slug %}">{{ directory.name }}</a></li>
     {% endfor %}
