@@ -56,3 +56,4 @@ target/
 noetikon/settings/local.py
 *.sqlite3
 .sass-cache
+static/
