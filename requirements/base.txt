@@ -10,4 +10,4 @@ django-nopassword
 django-extensions
 django-pipeline
 djangorestframework
-sorl-thumbnail==12.1c
+sorl-thumbnail

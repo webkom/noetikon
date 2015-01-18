@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>{{ object.name }}</h2>
+
+  {% if object.is_image %}
+    <img src="{{ object.thumbnail.url }}" class="thumbnail" style="width: {{ object.thumbnail.x }}px;">
+  {% endif %}
+{% endblock %}

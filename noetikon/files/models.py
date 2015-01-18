@@ -28,6 +28,7 @@ class FilePropertyMixin(object):
         return os.path.exists(self.path)
 
 
+
 class Directory(FilePropertyMixin, PersistentModel):
     path = models.TextField(unique=True)
     slug = models.TextField(unique=True, editable=False)
@@ -91,9 +92,16 @@ class File(FilePropertyMixin, BasisModel):
         self.slug = os.path.join(self.parent_folder.slug, slugify(os.path.basename(self.path)))
         super().save(*args, **kwargs)
 
+    @cached_property
+    def extension(self):
+        return os.path.splitext(self.path)[1].replace('.', '')
+
     def is_image(self):
-        return os.path.splitext(self.path) in settings.FILE_TYPES['image']
+        return self.extension in settings.FILE_TYPES['image']
+
+    def thumbnail(self):
+        return get_thumbnail(self.path, '500')
 
     @property
     def x_redirect_url(self):
-        return '/protected{}'.format(self.path.replace(settings.STORAGE_BASE_PATH, ''))
+        return '/protected{}'.format(self.path.replace(settings.MEDIA_ROOT, ''))

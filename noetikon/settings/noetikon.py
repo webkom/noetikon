@@ -7,5 +7,3 @@ FILE_TYPES = {
 }
 
 IGNORE_FILES = ['.DS_Store', 'Thumbs.db']
-
-STORAGE_BASE_PATH = ''

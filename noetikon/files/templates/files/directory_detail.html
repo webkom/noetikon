@@ -9,7 +9,7 @@
   </ul>
   <ul class="file-list">
     {% for file in object.files.all %}
-      <li><a href="{% url 'file-download' file.slug %}">{{ file.name }}</a></li>
+      <li><a href="{% url 'file-detail' file.slug %}">{{ file.name }}</a></li>
     {% endfor %}
   </ul>
 {% endblock %}

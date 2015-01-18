@@ -13,11 +13,17 @@ class DirectoryListView(LoginRequiredMixin, ListView):
         return Directory.objects.permitted(self.request.user).filter(parent_folder=None)
 
 
-class DirectoryDetailView(LoginRequiredMixin, DetailView):
+class PermittedDetailView(LoginRequiredMixin, DetailView):
+    def get_queryset(self):
+        return self.model.objects.permitted(self.request.user)
+
+
+class DirectoryDetailView(PermittedDetailView):
     model = Directory
 
-    def get_queryset(self):
-        return Directory.objects.permitted(self.request.user)
+
+class FileDetailView(PermittedDetailView):
+    model = File
 
 
 class FileDownloadView(LoginRequiredMixin, SingleObjectMixin, View):
