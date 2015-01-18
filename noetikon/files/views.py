@@ -16,6 +16,9 @@ class DirectoryListView(LoginRequiredMixin, ListView):
 class DirectoryDetailView(LoginRequiredMixin, DetailView):
     model = Directory
 
+    def get_queryset(self):
+        return Directory.objects.permitted(self.request.user)
+
 
 class FileDownloadView(LoginRequiredMixin, SingleObjectMixin, View):
 

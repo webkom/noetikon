@@ -5,6 +5,7 @@ from django.db import models
 from django.utils.functional import cached_property
 
 from basis.models import PersistentModel, BasisModel
+import sys
 
 from noetikon.helpers import slugify
 from .managers import DirectoryManager
@@ -55,15 +56,21 @@ class Directory(FilePropertyMixin, PersistentModel):
             return False
 
         for item in os.listdir(self.path):
+            created = False
             path = os.path.join(self.path, item)
             if os.path.isdir(path):
-                directory = Directory.objects.get_or_create(path=path, parent_folder=self)[0]
+                directory, created = Directory.objects.get_or_create(path=path, parent_folder=self)
+                directory.users_with_access = self.users_with_access.all()
+                directory.groups_with_access = self.groups_with_access.all()
                 directory.update_content(verbose)
             elif os.path.isfile(path):
-                File.objects.get_or_create(path=path, parent_folder=self)
+                created = File.objects.get_or_create(path=path, parent_folder=self)[1]
 
             if verbose:
-                print(path)
+                if created:
+                    print(path)
+                else:
+                    sys.stdout.write('.')
 
 
 class File(FilePropertyMixin, BasisModel):
