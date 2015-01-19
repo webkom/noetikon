@@ -16,8 +16,9 @@ class BaseTestCase(TestCase):
         self.path = os.path.join(settings.MEDIA_ROOT, 'test')
         os.makedirs(self.path, exist_ok=True)
         os.makedirs(os.path.join(self.path, 'subdir'), exist_ok=True)
+        self.test_file = os.path.join(os.path.dirname(settings.BASE_DIR), 'requirements.txt')
         shutil.copyfile(
-            os.path.join(os.path.dirname(__file__), '../../../noetikon/requirements.txt'),
+            self.test_file,
             os.path.join(self.path, 'requirements.txt')
         )
         self.directory = Directory.objects.create(path=self.path)
@@ -65,7 +66,7 @@ class DirectoryTestCase(BaseTestCase):
     def test_update_content_output(self):
         with mock.patch('sys.stdout', new=StringIO()) as fake_out:
             shutil.copyfile(
-                os.path.join(os.path.dirname(__file__), '../../../noetikon/requirements.txt'),
+                self.test_file,
                 os.path.join(self.path, 'r.txt')
             )
             self.directory.update_content(verbose=True)
@@ -124,7 +125,7 @@ class FileTestCase(BaseTestCase):
 
     def test_ignore_files(self):
         shutil.copyfile(
-            os.path.join(os.path.dirname(__file__), '../../../noetikon/requirements.txt'),
+            self.test_file,
             os.path.join(self.path, '.DS_Store')
         )
         self.directory.update_content(verbose=False)
