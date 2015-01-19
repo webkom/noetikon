@@ -121,3 +121,11 @@ class FileTestCase(BaseTestCase):
 
     def test_x_redirect_url(self):
         self.assertEqual(self.file.x_redirect_url, '/protected/test/requirements.txt')
+
+    def test_ignore_files(self):
+        shutil.copyfile(
+            os.path.join(os.path.dirname(__file__), '../../../noetikon/requirements.txt'),
+            os.path.join(self.path, '.DS_Store')
+        )
+        self.directory.update_content(verbose=False)
+        self.assertEqual(self.directory.files.all().count(), 1)

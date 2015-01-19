@@ -71,7 +71,7 @@ class Directory(FilePropertyMixin, TimeStampModel, PersistentModel):
             return False
 
         for item in os.listdir(self.path):
-            created = False
+            created = None
             path = os.path.join(self.path, item)
             if os.path.isdir(path):
                 directory, created = Directory.objects.get_or_create(path=path, parent_folder=self)
@@ -79,13 +79,15 @@ class Directory(FilePropertyMixin, TimeStampModel, PersistentModel):
                 directory.groups_with_access = self.groups_with_access.all()
                 directory.update_content(verbose)
             elif os.path.isfile(path):
-                created = File.objects.get_or_create(path=path, parent_folder=self)[1]
+                if not os.path.basename(path) in settings.IGNORE_FILES:
+                    created = File.objects.get_or_create(path=path, parent_folder=self)[1]
 
             if verbose:
                 if created:
                     print(path)
                 else:
-                    sys.stdout.write('.')
+                    if created is not None:
+                        sys.stdout.write('.')
 
 
 class File(FilePropertyMixin, TimeStampModel, PersistentModel):
