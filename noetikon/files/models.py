@@ -59,11 +59,12 @@ class Directory(FilePropertyMixin, TimeStampModel, PersistentModel):
 
     @cached_property
     def size(self):
-        return sum(
-            [os.path.getsize(self.path)] +
-            [d.size for d in self.children.all()] +
-            [f.size for f in self.files.all()]
-        )
+        if self.exists:
+            return sum(
+                [os.path.getsize(self.path)] +
+                [d.size for d in self.children.all()] +
+                [f.size for f in self.files.all()]
+            )
 
     def update_content(self, verbose=True):
         if not os.path.exists(self.path):
