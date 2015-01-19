@@ -11,3 +11,4 @@ django-extensions
 django-pipeline
 djangorestframework
 sorl-thumbnail
+pillow
