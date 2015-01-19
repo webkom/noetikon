@@ -14,7 +14,7 @@ class BaseTestCase(TestCase):
 
     def setUp(self):
         self.path = os.path.join(settings.MEDIA_ROOT, 'test')
-        os.makedirs(self.path)
+        os.makedirs(self.path, exist_ok=True)
         os.mkdir(os.path.join(self.path, 'subdir'))
         shutil.copyfile(
             os.path.join(os.path.dirname(__file__), '../../../noetikon/requirements.txt'),
