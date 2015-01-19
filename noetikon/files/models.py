@@ -57,6 +57,14 @@ class Directory(FilePropertyMixin, TimeStampModel, PersistentModel):
             self.slug = slugify(os.path.basename(self.path))
         super().save(*args, **kwargs)
 
+    @cached_property
+    def size(self):
+        return sum(
+            [os.path.getsize(self.path)] +
+            [d.size for d in self.children.all()] +
+            [f.size for f in self.files.all()]
+        )
+
     def update_content(self, verbose=True):
         if not os.path.exists(self.path):
             self.delete()
