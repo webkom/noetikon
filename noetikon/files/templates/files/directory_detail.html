@@ -2,14 +2,25 @@
 
 {% block content %}
   <h2>{{ object.name }}</h2>
-  <ul class="directory-list">
+  <table class="inventory-table">
+    <tr>
+      <th>Name:</th>
+      <th>Size:</th>
+      <th>Last modified:</th>
+    </tr>
     {% for directory in object.children.all %}
-      <li><a href="{% url 'directory-detail' directory.slug %}">{{ directory.name }}</a></li>
+      <tr>
+        <td><a href="{% url 'directory-detail' directory.slug %}">{{ directory.name }}</a></td>
+        <td class="meta">{{ file.size|filesizeformat }}</td>
+        <td class="meta">{{ file.modified_time|timesince }}</td>
+      </tr>
     {% endfor %}
-  </ul>
-  <ul class="file-list">
     {% for file in object.files.all %}
-      <li><a href="{% url 'file-detail' file.slug %}">{{ file.name }}</a></li>
+      <tr>
+        <td><a href="{% url 'file-detail' file.slug %}">{{ file.name }}</a></td>
+        <td class="meta">{{ file.size|filesizeformat }}</td>
+        <td class="meta">{{ file.modified_time|timesince }}</td>
+      </tr>
     {% endfor %}
-  </ul>
+  </table>
 {% endblock %}

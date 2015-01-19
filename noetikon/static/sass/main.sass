@@ -1,4 +1,5 @@
 $gray: #333
+$light-gray: lighten($gray, 40%)
 $very-light-gray: lighten($gray, 70%)
 $list-link-color: #222
 
@@ -16,15 +17,27 @@ img
   max-width: 1000px
   margin: 0 auto
 
-.directory-list,
-.file-list
-  margin: 0
-  padding: 0
+.inventory-table
+  width: 100%
+  border-spacing: 0
 
-  li
+  tr
     line-height: 2em
-    border-bottom: 1px dashed $gray
     list-style-type: none
+
+    th
+      text-align: left
+
+      &:first-child
+        min-width: 60%
+
+    td
+      margin: 0
+      border-bottom: 1px dashed $light-gray
+
+      &:first-child
+        min-width: 60%
+
 
     a
       color: $list-link-color
@@ -32,6 +45,10 @@ img
 
       &:active
         color: darken($list-link-color, 20%)
+
+    .meta
+      margin: 0 10px
+      color: $light-gray
 
     &:hover
       background: $very-light-gray
