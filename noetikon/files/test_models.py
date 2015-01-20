@@ -126,6 +126,31 @@ class FileTestCase(BaseTestCase):
         with mock.patch('noetikon.files.models.File.extension', 'txt'):
             self.assertFalse(self.file.is_image())
 
+    def test_fa_icon(self):
+        with mock.patch('noetikon.files.models.File.extension', 'png'):
+            self.assertTrue(self.file.fa_icon(), 'image-o')
+
+        with mock.patch('noetikon.files.models.File.extension', 'zip'):
+            self.assertTrue(self.file.fa_icon(), 'archive-o')
+
+        with mock.patch('noetikon.files.models.File.extension', 'docx'):
+            self.assertTrue(self.file.fa_icon(), 'word-o')
+
+        with mock.patch('noetikon.files.models.File.extension', 'xlsx'):
+            self.assertTrue(self.file.fa_icon(), 'excel-o')
+
+        with mock.patch('noetikon.files.models.File.extension', 'ppt'):
+            self.assertTrue(self.file.fa_icon(), 'powerpoint-o')
+
+        with mock.patch('noetikon.files.models.File.extension', 'pdf'):
+            self.assertTrue(self.file.fa_icon(), 'pdf-o')
+
+        with mock.patch('noetikon.files.models.File.extension', 'txt'):
+            self.assertTrue(self.file.fa_icon(), 'text-o')
+
+        with mock.patch('noetikon.files.models.File.extension', 't'):
+            self.assertTrue(self.file.fa_icon(), 'file-o')
+
     def test_x_redirect_url(self):
         self.assertEqual(self.file.x_redirect_url, '/protected/test/requirements.txt')
 

@@ -109,8 +109,28 @@ class File(FilePropertyMixin, TimeStampModel, PersistentModel):
     def extension(self):
         return os.path.splitext(self.path)[1].replace('.', '').lower()
 
+    def fa_icon(self):
+        if self.is_image():
+            return 'file-image-o'
+        if self._is_filetype('archive'):
+            return 'file-archive-o'
+        if self._is_filetype('text'):
+            return 'file-text-o'
+        if self.extension == 'pdf':
+            return 'file-pdf-o'
+        if self.extension.startswith('doc'):
+            return 'file-word-o'
+        if self.extension.startswith('xls'):
+            return 'file-excel-o'
+        if self.extension.startswith('ppt'):
+            return 'file-powerpoint-o'
+        return 'file-o'
+
     def is_image(self):
-        return self.extension in settings.FILE_TYPES['image']
+        return self._is_filetype('image')
+
+    def _is_filetype(self, file_type):
+        return self.extension in settings.FILE_TYPES[file_type]
 
     def thumbnail(self):
         return get_thumbnail(self.path, '500')
