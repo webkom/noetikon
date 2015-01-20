@@ -69,7 +69,8 @@ class DirectoryTestCase(BaseTestCase):
                 os.path.join(self.path, 'r.txt')
             )
             self.directory.update_content(verbose=True)
-            self.assertEqual(fake_out.getvalue(), '{}/test/r.txt\n..'.format(settings.MEDIA_ROOT))
+            self.assertTrue('test/r.txt\n' in fake_out.getvalue())
+            self.assertTrue('..' in fake_out.getvalue())
 
 
 class FileTestCase(BaseTestCase):
