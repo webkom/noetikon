@@ -16,7 +16,7 @@ from .managers import DirectoryManager, FileManager
 class FilePropertyMixin(object):
 
     def __str__(self):
-        return self.name
+        return self.name or ''
 
     @cached_property
     def name(self):

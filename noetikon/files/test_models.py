@@ -33,6 +33,9 @@ class DirectoryTestCase(BaseTestCase):
     def test_str(self):
         self.assertEqual(str(self.directory), self.directory.name)
 
+        with mock.patch('noetikon.files.models.Directory.name', None):
+            self.assertEqual(str(Directory()), '')
+
     def test_exists(self):
         self.assertTrue(self.directory.exists)
 
@@ -81,7 +84,10 @@ class FileTestCase(BaseTestCase):
         self.file = File.objects.get(path=self.file_path)
 
     def test_str(self):
-        self.assertEqual(str(self.directory), self.directory.name)
+        self.assertEqual(str(self.file), self.file.name)
+
+        with mock.patch('noetikon.files.models.File.name', None):
+            self.assertEqual(str(File()), '')
 
     def test_exists(self):
         self.assertTrue(self.file.exists)
