@@ -9,9 +9,11 @@
       <th>Last modified:</th>
     </tr>
     {% for directory in object_list %}
-      <td><a href="{% url 'directory-detail' directory.slug %}">{{ directory.name }}</a></td>
-      <td class="meta">{{ file.size|filesizeformat }}</td>
-      <td class="meta">{{ file.modified_time|timesince }}</td>
+      <tr>
+        <td><a href="{% url 'directory-detail' directory.slug %}">{{ directory.name }}</a></td>
+        <td class="meta">{{ file.size|filesizeformat }}</td>
+        <td class="meta">{{ file.modified_time|timesince }}</td>
+      </tr>
     {% endfor %}
   </table>
 {% endblock %}
