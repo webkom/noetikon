@@ -1,9 +1,19 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h2>{{ object.name }}</h2>
+  {% include "files/_partials/breadcrumb.html" %}
 
   {% if object.is_image %}
-    <img src="{{ object.thumbnail.url }}" class="thumbnail" style="width: {{ object.thumbnail.x }}px;">
+    <img src="{{ object.thumbnail.url }}" class="thumbnail"
+         style="width: {{ object.thumbnail.x }}px;">
+  {% else %}
+    <div class="file-content">
+    {% if object.is_text %}
+      <pre>{{ object.content }}</pre>
+    {% elif object.can_be_rendered %}
+      {{ object.rendered_content }}
+    {% endif %}
+    </div>
   {% endif %}
+
 {% endblock %}

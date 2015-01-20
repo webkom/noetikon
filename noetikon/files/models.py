@@ -2,11 +2,12 @@ import os
 import sys
 from datetime import datetime
 
+import pypandoc
 from django.conf import settings
 from django.db import models
 from django.utils.functional import cached_property
-
 from basis.models import PersistentModel, TimeStampModel
+from django.utils.safestring import mark_safe
 from sorl.thumbnail.shortcuts import get_thumbnail
 
 from noetikon.helpers import slugify
@@ -129,11 +130,26 @@ class File(FilePropertyMixin, TimeStampModel, PersistentModel):
     def is_image(self):
         return self._is_filetype('image')
 
+    def can_be_rendered(self):
+        return self._is_filetype('renderable')
+
     def _is_filetype(self, file_type):
         return self.extension in settings.FILE_TYPES[file_type]
 
     def thumbnail(self):
-        return get_thumbnail(self.path, '500')
+        return get_thumbnail(self.path, '1000')
+
+    @cached_property
+    def content(self):
+        with open(self.path) as f:
+            return f.read()
+
+    def rendered_content(self):
+        try:
+            return mark_safe(pypandoc.convert(self.content, 'html', format=self.extension))
+        except Exception as e:
+            print(e)
+            return self.content
 
     @property
     def x_redirect_url(self):

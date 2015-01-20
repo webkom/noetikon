@@ -2,6 +2,7 @@ $gray: #333
 $light-gray: lighten($gray, 40%)
 $very-light-gray: lighten($gray, 70%)
 $list-link-color: #222
+$blue: #c7def8
 
 body
   font-size: 17px
@@ -11,7 +12,15 @@ h1, h2, h3, h4, h5
 
 img
   max-width: 100%
-
+ 
+hr
+  border: 0
+  height: 1px
+  background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)) 
+  background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)) 
+  background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)) 
+  background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)) 
+  
 .wrapper
   width: 90%
   max-width: 1000px
@@ -62,3 +71,6 @@ img
 .thumbnail
   margin: 10px auto
   display: block
+
+.file-content
+  padding: 1em

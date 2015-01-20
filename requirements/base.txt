@@ -12,3 +12,4 @@ django-pipeline
 djangorestframework
 sorl-thumbnail
 pillow
+-e git+git@github.com:relekang/pypandoc.git#egg=pypandoc
