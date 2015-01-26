@@ -12,8 +12,8 @@
     {% for directory in object.children.all %}
       <tr>
         <td><a href="{% url 'directory-detail' directory.slug %}"><i class="fa fa-folder"></i> {{ directory.name }}</a></td>
-        <td class="meta">{{ file.size|filesizeformat }}</td>
-        <td class="meta">{{ file.modified_time|timesince }}</td>
+        <td class="meta">{{ directory.size|filesizeformat }}</td>
+        <td class="meta">{{ directory.modified_time|timesince }}</td>
       </tr>
     {% endfor %}
     {% for file in object.files.all %}
