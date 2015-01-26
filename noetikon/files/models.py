@@ -1,12 +1,13 @@
 import os
 import sys
 from datetime import datetime
+from pathlib import Path
 
 import pypandoc
+from basis.models import PersistentModel, TimeStampModel
 from django.conf import settings
 from django.db import models
 from django.utils.functional import cached_property
-from basis.models import PersistentModel, TimeStampModel
 from django.utils.safestring import mark_safe
 from sorl.thumbnail.shortcuts import get_thumbnail
 
@@ -86,13 +87,14 @@ class Directory(FilePropertyMixin, TimeStampModel, PersistentModel):
             created = None
             path = os.path.join(self.path, item)
             if os.path.isdir(path):
-                directory, created = Directory.objects.get_or_create(path=path, parent_folder=self)
+                directory, created = Directory.all_objects.get_or_create(path=path,
+                                                                         parent_folder=self)
                 directory.users_with_access = self.users_with_access.all()
                 directory.groups_with_access = self.groups_with_access.all()
                 directory.update_content(verbose)
             elif os.path.isfile(path):
                 if not os.path.basename(path) in settings.IGNORE_FILES:
-                    created = File.objects.get_or_create(path=path, parent_folder=self)[1]
+                    created = File.all_objects.get_or_create(path=path, parent_folder=self)[1]
 
             if verbose:
                 if created:
