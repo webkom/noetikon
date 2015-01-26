@@ -1,13 +1,9 @@
 from django.test import TestCase
 from rest_framework.reverse import reverse
+from noetikon.helpers.test_mixins import LoginRequiredTestMixin
 
 
-class LoginRequiredTestCase(TestCase):
-
-    def assertLoginRequired(self, url):
-        response = self.client.get(url)
-        self.assertEqual(response.status_code, 302)
-        self.assertTrue('?next={}'.format(url) in response.url)
+class LoginRequiredTestCase(LoginRequiredTestMixin, TestCase):
 
     def test_directory_list(self):
         self.assertLoginRequired(reverse('directory-list'))
