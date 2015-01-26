@@ -37,6 +37,16 @@ class FilePropertyMixin(object):
     def modified_time(self):
         return datetime.fromtimestamp(os.path.getmtime(self.path))
 
+    @cached_property
+    def parents(self):
+        parents = []
+        current = self.parent_folder
+        while current.parent_folder:
+            parents.append(current)
+            current = current.parent_folder
+        parents.reverse()
+        return parents
+
 
 class Directory(FilePropertyMixin, TimeStampModel, PersistentModel):
     path = models.TextField(unique=True)
