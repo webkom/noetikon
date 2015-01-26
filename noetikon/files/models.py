@@ -10,7 +10,7 @@ from basis.models import PersistentModel, TimeStampModel
 from django.utils.safestring import mark_safe
 from sorl.thumbnail.shortcuts import get_thumbnail
 
-from noetikon.helpers import slugify
+from noetikon.helpers.text import slugify
 from .managers import DirectoryManager, FileManager
 
 
