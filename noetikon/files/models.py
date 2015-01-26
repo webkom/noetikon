@@ -41,10 +41,10 @@ class FilePropertyMixin(object):
     @cached_property
     def parents(self):
         parents = []
-        current = self.parent_folder
+        current = self
         while current.parent_folder:
-            parents.append(current)
             current = current.parent_folder
+            parents.append(current)
         parents.reverse()
         return parents
 

@@ -49,6 +49,10 @@ class DirectoryTestCase(BaseTestCase):
     def test_size(self):
         self.assertGreater(self.directory.size, 0)
 
+    def test_parents(self):
+        self.assertEqual(len(self.directory.children.last().parents), 1)
+        self.assertEqual(self.directory.children.last().parents[0].pk, self.directory.pk)
+
     def test_modified_time(self):
         today = datetime.today()
         self.assertAlmostEqual(self.directory.modified_time.year, today.year)
