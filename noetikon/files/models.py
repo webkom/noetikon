@@ -1,6 +1,7 @@
 import os
 import sys
 from datetime import datetime
+from django.core.cache import cache
 
 import pypandoc
 from basis.models import PersistentModel, TimeStampModel
@@ -70,12 +71,17 @@ class Directory(FilePropertyMixin, TimeStampModel, PersistentModel):
 
     @cached_property
     def size(self):
-        if self.exists:
-            return sum(
-                [os.path.getsize(self.path)] +
-                [d.size for d in self.children.all()] +
-                [f.size for f in self.files.all()]
-            )
+        key = 'directorysize{}'.format(self.pk)
+        size = cache.get(key)
+        if size is None:
+            if self.exists:
+                size = sum(
+                    [os.path.getsize(self.path)] +
+                    [d.size for d in self.children.all()] +
+                    [f.size for f in self.files.all()]
+                )
+                cache.set(key, size)
+        return size or 0
 
     def update_content(self, verbose=True):
         if not os.path.exists(self.path):
