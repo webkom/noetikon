@@ -1,7 +1,8 @@
 from django.conf.urls import url
+
 from noetikon.files.views import FileDetailView
 
-from .views import DirectoryListView, DirectoryDetailView, FileDownloadView
+from .views import DirectoryDetailView, DirectoryListView, FileDownloadView
 
 urlpatterns = [
     url(r'^$', DirectoryListView.as_view(), name='directory-list'),

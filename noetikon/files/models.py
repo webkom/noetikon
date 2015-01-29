@@ -1,17 +1,18 @@
 import os
 import sys
 from datetime import datetime
-from django.core.cache import cache
 
 import pypandoc
 from basis.models import PersistentModel, TimeStampModel
 from django.conf import settings
+from django.core.cache import cache
 from django.db import models
 from django.utils.functional import cached_property
 from django.utils.safestring import mark_safe
 from sorl.thumbnail.shortcuts import get_thumbnail
 
 from noetikon.helpers.text import slugify
+
 from .managers import DirectoryManager, FileManager
 
 

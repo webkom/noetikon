@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import File, Directory
+from .models import Directory, File
 
 
 class DirectoryInline(admin.TabularInline):

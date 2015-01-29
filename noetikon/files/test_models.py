@@ -1,8 +1,9 @@
-from io import StringIO
 import os
 import shutil
 from datetime import datetime
+from io import StringIO
 from unittest import mock
+
 from django.conf import settings
 from django.template.defaultfilters import filesizeformat
 from django.test import TestCase

@@ -1,6 +1,7 @@
 import os
+
 from django.conf import settings
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import Group, User
 from django.test import TestCase
 
 from noetikon.files.models import Directory, File

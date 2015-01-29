@@ -10,6 +10,9 @@ dev:
 prod:
 	pip install -r requirements/prod.txt --upgrade
 
+isort:
+	isort -rc noetikon
+
 noetikon/settings/local.py:
 	touch noetikon/settings/local.py
 
@@ -20,4 +23,4 @@ production:
 	venv/bin/python manage.py collectstatic --noinput
 	sudo supervisorctl restart noetikon
 
-.PHONY: help dev prod production
+.PHONY: help dev prod production isort

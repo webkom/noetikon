@@ -1,6 +1,6 @@
 from braces.views import LoginRequiredMixin
 from django.http import HttpResponse
-from django.views.generic import ListView, DetailView, View
+from django.views.generic import DetailView, ListView, View
 from django.views.generic.detail import SingleObjectMixin
 
 from .models import Directory, File
