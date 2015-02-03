@@ -30,6 +30,7 @@ class FilePropertyMixin(object):
     def size(self):
         if self.exists:
             return os.path.getsize(self.path)
+        return 0
 
     @cached_property
     def exists(self):

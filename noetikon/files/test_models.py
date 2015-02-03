@@ -87,6 +87,10 @@ class FileTestCase(BaseTestCase):
         super().setUp()
         self.file_path = os.path.join(self.path, 'requirements.txt')
         self.file = File.objects.get(path=self.file_path)
+        self.non_existing_file = File.objects.create(
+            path=self.path + 'n',
+            parent_folder=self.directory
+        )
 
     def test_str(self):
         self.assertEqual(str(self.file), self.file.name)
@@ -96,10 +100,7 @@ class FileTestCase(BaseTestCase):
 
     def test_exists(self):
         self.assertTrue(self.file.exists)
-
-        file_object = File.objects.create(path=self.path + 'n', parent_folder=self.directory)
-        self.assertFalse(file_object.exists)
-        file_object.delete()
+        self.assertFalse(self.non_existing_file.exists)
 
     def test_name(self):
         self.assertEqual(self.file.name, 'requirements.txt')
@@ -107,6 +108,7 @@ class FileTestCase(BaseTestCase):
     def test_size(self):
         self.assertEqual(self.file.size, 25)
         self.assertEqual(filesizeformat(self.file.size), '25\xa0bytes')
+        self.assertEqual(self.non_existing_file.size, 0)
 
     def test_modified_time(self):
         today = datetime.today()
@@ -165,4 +167,4 @@ class FileTestCase(BaseTestCase):
             os.path.join(self.path, '.DS_Store')
         )
         self.directory.update_content(verbose=False)
-        self.assertEqual(self.directory.files.all().count(), 1)
+        self.assertEqual(self.directory.files.all().count(), 2)
