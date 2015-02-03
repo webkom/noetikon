@@ -1,10 +1,13 @@
 import os
+from django.core.urlresolvers import reverse_lazy
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
 DEBUG = True
 SECRET_KEY = '7$gkoy@rr#sok+gq780grpl1^g7c=o#h#(gxy5_p9dtut%oiyr'
+
+LOGIN_REDIRECT_URL = reverse_lazy('directory-list')
 
 ALLOWED_HOSTS = []
 
