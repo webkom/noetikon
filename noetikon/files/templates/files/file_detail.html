@@ -2,10 +2,12 @@
 
 {% block content %}
   {% include "files/_partials/breadcrumb.html" %}
+  <div class="text-center">
+    <a href="{% url 'file-download' object.slug %}"><i class="fa fa-download"></i> Download</a>
+  </div>
 
   {% if object.is_image %}
-    <img src="{{ object.thumbnail.url }}" class="thumbnail"
-         style="width: {{ object.thumbnail.x }}px;">
+    <img src="{{ object.thumbnail.url }}" class="thumbnail" style="width: {{ object.thumbnail.x }}px;">
   {% else %}
     <div class="file-content">
     {% if object.is_text %}
