@@ -1,4 +1,5 @@
-<h2>
+<h2 class="breadcrumb">
+  <a href="{% url 'directory-list' %}">..</a> /
   {% for parent in object.parents %}
     <a href="{% url 'directory-detail' parent.slug %}"> {{ parent.name }}</a> /
   {% endfor %}

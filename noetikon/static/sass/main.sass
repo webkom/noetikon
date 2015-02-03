@@ -3,7 +3,8 @@
 $gray: #333
 $light-gray: lighten($gray, 40%)
 $very-light-gray: lighten($gray, 70%)
-$list-link-color: #222
+$link-color: #222
+$list-link-color: $link-color
 $blue: #c7def8
 
 body
@@ -14,7 +15,10 @@ h1, h2, h3, h4, h5
 
 img
   max-width: 100%
- 
+
+a
+  color: $link-color
+
 hr
   border: 0
   height: 1px
@@ -27,6 +31,10 @@ hr
   width: 90%
   max-width: 1000px
   margin: 0 auto
+
+.breadcrumb
+  a
+    color: $light-gray
 
 .inventory-table
   width: 100%
