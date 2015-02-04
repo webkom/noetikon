@@ -11,11 +11,22 @@ $ make
 ```
 
 ## Development
-### Mac
+### OS specific dependencies
+#### OS X
 ```bash
 brew update
 brew install python3 postgresql
+```
+
+### Environment
+```bash
+gem install compass
 make noetikon/settings/local.py
 mkvirtualenv noetikon
 make dev
 ```
+
+--------------
+
+MIT © Webkom, Abakus Linjeforening
+
