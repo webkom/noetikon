@@ -3,11 +3,11 @@ import shutil
 from datetime import datetime
 from io import StringIO
 from unittest import mock
-from PIL import Image
 
 from django.conf import settings
 from django.template.defaultfilters import filesizeformat
 from django.test import TestCase
+from PIL import Image
 
 from noetikon.files.models import Directory, File
 

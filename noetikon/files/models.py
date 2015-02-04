@@ -166,7 +166,7 @@ class File(FilePropertyMixin, TimeStampModel, PersistentModel):
     def rendered_content(self):
         try:
             return mark_safe(pypandoc.convert(self.content, 'html', format=self.extension))
-        except Exception as e:
+        except Exception:
             return self.content
 
     @property

@@ -62,21 +62,20 @@ STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
 
 TEMPLATE_DIRS = os.path.join(BASE_DIR, 'templates'),
 
-# STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
-# PIPELINE_COMPILERS = 'pipeline.compilers.sass.SASSCompiler',
-#
-# STATICFILES_FINDERS = (
-#     'django.contrib.staticfiles.finders.FileSystemFinder',
-#     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#     'pipeline.finders.PipelineFinder',
-# )
-#
-# PIPELINE_CSS = {
-#     'main': {
-#         'source_filenames': (
-#             'sass/main.sass',
-#         ),
-#         'output_filename': 'sass/main.css',
-#     },
-# }
-#
+STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+PIPELINE_COMPILERS = 'pipeline_compass.compass.CompassCompiler',
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'pipeline.finders.PipelineFinder',
+)
+
+PIPELINE_CSS = {
+    'main': {
+        'source_filenames': (
+            'sass/main.sass',
+        ),
+        'output_filename': 'css/main.css',
+    },
+}

@@ -9,6 +9,7 @@ django-braces
 django-nopassword
 django-extensions
 django-pipeline
+django-pipeline-compass-rubygem
 djangorestframework
 sorl-thumbnail
 pillow
