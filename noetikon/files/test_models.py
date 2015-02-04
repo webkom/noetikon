@@ -3,6 +3,7 @@ import shutil
 from datetime import datetime
 from io import StringIO
 from unittest import mock
+from PIL import Image
 
 from django.conf import settings
 from django.template.defaultfilters import filesizeformat
@@ -119,6 +120,19 @@ class FileTestCase(BaseTestCase):
     def test_slug(self):
         self.assertEqual(self.file.slug, 'test/requirementstxt')
 
+    def test_content(self):
+        self.assertEqual(self.file.content, '-r requirements/base.txt\n')
+
+    def test_thumbnail(self):
+        image_path = os.path.join(self.directory.path, 'test_logo.jpg')
+        image = Image.new('L', (500, 500))
+        image.save(image_path)
+        file = File.objects.create(parent_folder=self.directory, path=image_path)
+        thumbnail = file.thumbnail()
+        self.assertEqual(thumbnail.x, 1000)
+        os.remove(image_path)
+        file.delete(force=True)
+
     def test_extension(self):
         self.assertEqual(self.file.extension, 'txt')
         file = File(path='file.PNG')
@@ -126,6 +140,12 @@ class FileTestCase(BaseTestCase):
         file = File(path='file...PNG')
         self.file.save()
         self.assertEqual(file.extension, 'png')
+
+    def test_rendered_content(self):
+        with mock.patch('pypandoc.convert') as mock_pypandoc:
+            self.file.rendered_content()
+            self.assertTrue(mock_pypandoc.called)
+        self.assertEqual(self.file.rendered_content(), self.file.content)
 
     def test_is_image(self):
         with mock.patch('noetikon.files.models.File.extension', 'png'):
