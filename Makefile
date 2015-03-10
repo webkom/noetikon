@@ -18,7 +18,7 @@ noetikon/settings/local.py:
 
 production:
 	git fetch && git reset --hard origin/master
-	venv/bin/pip install -r requirements/prod.txt --upgrade
+	venv/bin/pip install -Ur requirements/prod.txt --upgrade
 	venv/bin/python manage.py migrate
 	venv/bin/python manage.py collectstatic --noinput
 	sudo supervisorctl restart noetikon
