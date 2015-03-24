@@ -22,6 +22,7 @@ INSTALLED_APPS = (
 
     'django_extensions',
     'pipeline',
+    'cachalot',
 
     'noetikon.files',
 )

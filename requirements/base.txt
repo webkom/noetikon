@@ -10,7 +10,9 @@ django-nopassword
 django-extensions
 django-pipeline
 django-pipeline-compass-rubygem
+django-cachalot==1.0.0
 djangorestframework
 python-thumbnails
 pillow
+
 -e git+https://github.com/relekang/pypandoc.git#egg=pypandoc
