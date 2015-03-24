@@ -11,6 +11,7 @@ django-extensions
 django-pipeline
 django-pipeline-compass-rubygem
 djangorestframework
+django-cachalot==1.0.0
 sorl-thumbnail
 pillow
 -e git+https://github.com/relekang/pypandoc.git#egg=pypandoc
