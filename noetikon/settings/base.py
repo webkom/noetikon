@@ -22,7 +22,6 @@ INSTALLED_APPS = (
 
     'django_extensions',
     'pipeline',
-    'sorl.thumbnail',
 
     'noetikon.files',
 )
