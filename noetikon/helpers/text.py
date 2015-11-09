@@ -1,5 +1,5 @@
-from django.utils.text import slugify as django_slugify
+import urllib
 
 
 def slugify(text):
-    return django_slugify(text).replace('æ', 'ae').replace('ø', 'oe').replace('å', 'aa').lower()
+    return urllib.parse.quote(text)

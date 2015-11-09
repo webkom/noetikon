@@ -118,7 +118,7 @@ class FileTestCase(BaseTestCase):
         self.assertAlmostEqual(self.file.modified_time.day, today.day)
 
     def test_slug(self):
-        self.assertEqual(self.file.slug, 'test/requirementstxt')
+        self.assertEqual(self.file.slug, 'test/requirements.txt')
 
     def test_content(self):
         self.assertEqual(self.file.content, '-r requirements/base.txt\n')
