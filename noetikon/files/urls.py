@@ -9,5 +9,5 @@ urlpatterns = [
     url(r'^download/(?P<slug>.+)/$', FileDownloadView.as_view(),
         name='file-download'),
     url(r'^view/(?P<slug>.+)/$', FileDetailView.as_view(), name='file-detail'),
-    url(r'^(?P<slug>[a-zA-Z0-9\-/_ ]+)/$', DirectoryDetailView.as_view(), name='directory-detail'),
+    url(r'^(?P<slug>.+)/$', DirectoryDetailView.as_view(), name='directory-detail'),
 ]
