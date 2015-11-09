@@ -1,9 +1,8 @@
 tasks:
-  - tox
-  - flake8
-  - isort -c -rc noetikon
-  - coverage report --fail-under=90
-  - coverage xml
+  - tox -e flake8
+  - tox -e isort
+  - tox -e tests
+  - tox -e coverage
 
 coverage:
   path: coverage.xml
