@@ -6,8 +6,8 @@ from .views import DirectoryDetailView, DirectoryListView, FileDownloadView
 
 urlpatterns = [
     url(r'^$', DirectoryListView.as_view(), name='directory-list'),
-    url(r'^download/(?P<slug>[a-zA-Z0-9\-/_ ]+)/$', FileDownloadView.as_view(),
+    url(r'^download/(?P<slug>.+)/$', FileDownloadView.as_view(),
         name='file-download'),
-    url(r'^view/(?P<slug>[a-zA-Z0-9\-/_ ]+)/$', FileDetailView.as_view(), name='file-detail'),
-    url(r'^(?P<slug>[a-zA-Z0-9\-/_ ]+)/$', DirectoryDetailView.as_view(), name='directory-detail'),
+    url(r'^view/(?P<slug>.+)/$', FileDetailView.as_view(), name='file-detail'),
+    url(r'^(?P<slug>.+)/$', DirectoryDetailView.as_view(), name='directory-detail'),
 ]
