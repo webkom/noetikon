@@ -1,18 +1,19 @@
-django>=1.8,<1.9
+django==1.9.8
 
-psycopg2
-markdown
-pyyaml
+psycopg2==2.6.2
+markdown==2.6.5
+pyyaml==3.11
+python-thumbnails==0.5.1
+pillow==3.1.1
 
-django-basis
-django-braces
-django-nopassword
-django-extensions
-django-pipeline
-django-pipeline-compass-rubygem
-django-cachalot==1.0.0
-djangorestframework
-python-thumbnails
-pillow
+django-basis==0.4.0
+django-braces==1.9.0
+django-nopassword==2.1.0
+django-extensions==1.6.7
+django-pipeline==1.6.4
+django-pipeline-compass-rubygem==0.1.9
+django-cachalot==1.2.0
+djangorestframework==3.4.0
+
 
 -e git+https://github.com/relekang/pypandoc.git#egg=pypandoc
