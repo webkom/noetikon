@@ -69,13 +69,15 @@ STATICFILES_FINDERS = (
     'pipeline.finders.PipelineFinder',
 )
 
-PIPELINE_CSS = {
-    'main': {
-        'source_filenames': (
-            'sass/main.sass',
-        ),
-        'output_filename': 'css/main.css',
-    },
+PIPELINE = {
+    'STYLESHEETS': {
+        'main': {
+            'source_filenames': (
+                'sass/main.sass',
+            ),
+            'output_filename': 'css/main.css',
+        },
+    }
 }
 
 TEMPLATES = [
