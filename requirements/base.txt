@@ -13,6 +13,6 @@ django-pipeline==1.6.8
 django-extensions==1.7.2
 django-pipeline-compass-rubygem==0.1.9
 django-cachalot==1.2.1
-djangorestframework==3.4.4
+djangorestframework==3.4.5
 
 -e git+https://github.com/relekang/pypandoc.git#egg=pypandoc
