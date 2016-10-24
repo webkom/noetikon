@@ -7,7 +7,7 @@ python-thumbnails==0.5.1
 pillow==3.3.1
 
 django-basis==0.4.0
-django-braces==1.9.0
+django-braces==1.10.0
 django-nopassword==2.1.1
 django-pipeline==1.6.8
 django-extensions==1.7.4
