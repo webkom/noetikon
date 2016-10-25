@@ -12,7 +12,7 @@ django-nopassword==2.1.1
 django-pipeline==1.6.8
 django-extensions==1.7.4
 django-pipeline-compass-rubygem==0.1.9
-django-cachalot==1.4.0
+django-cachalot==1.4.1
 djangorestframework==3.4.6
 
 -e git+https://github.com/relekang/pypandoc.git#egg=pypandoc
