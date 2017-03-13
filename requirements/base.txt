@@ -1,6 +1,6 @@
 django==1.9.8
 
-psycopg2==2.7
+psycopg2==2.7.1
 markdown==2.6.6
 pyyaml==3.12
 python-thumbnails==0.5.1
