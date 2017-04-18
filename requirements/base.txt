@@ -8,7 +8,7 @@ pillow==3.3.1
 
 django-basis==0.4.0
 django-braces==1.9.0
-django-nopassword==3.0.1
+django-nopassword==3.0.2
 django-pipeline==1.6.8
 django-extensions==1.7.4
 django-pipeline-compass-rubygem==0.1.9
